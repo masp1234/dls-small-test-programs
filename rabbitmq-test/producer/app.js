@@ -20,7 +20,11 @@ async function initializeChannel() {
 
 app.get('/rabbit', (req, res) => {
     console.log('hello');
-    ch1.sendToQueue(queue, Buffer.from('testing testing...'))
+    const message = {
+        test: 'test',
+        test2: 10212,
+    }
+    ch1.sendToQueue(queue, Buffer.from(JSON.stringify(message)))
     res.send('hello')
 })
 
